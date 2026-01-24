@@ -1,4 +1,4 @@
-# AESD ECEN5713 Final Project - Fall 2023
+# AESD ECEA-5307 Final Project - Spring 2026
 
 This repository is based out of the starter code for buildroot based assignments for the course Advanced Embedded Software Design, and it contains all of the required changes introduced to fulfill the requirements for the final project of the course.
 
