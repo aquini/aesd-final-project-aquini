@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# Starts mjpg_streamer.
+# Simple init script for the final project service
+#
+
+start() {
+	INPUT_ARGS="/usr/lib/mjpg-streamer/input_uvc.so"
+	OUTPUT_ARGS="/usr/lib/mjpg-streamer/output_http.so -w /usr/share/mjpg-streamer/www/"
+
+	printf "Starting mjpg-streamer service: "
+	umask 077
+
+	start-stop-daemon -b -m -S -q -p /var/run/mjpg.pid \
+		--exec /usr/bin/mjpg_streamer -- -i "${INPUT_ARGS}" -o "${OUTPUT_ARGS}"
+	[ $? = 0 ] && echo "OK" || echo "FAIL"
+}
+
+stop() {
+	printf "Stopping mjpg-streamer service: "
+	start-stop-daemon -K -q -p /var/run/mjpg.pid
+	[ $? = 0 ] && echo "OK" || echo "FAIL"
+}
+
+restart() {
+	stop
+	start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
