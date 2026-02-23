@@ -5,3 +5,6 @@ This repository is based out of the starter code for buildroot based assignments
 ## Project outline and Schedule details:
 * [Project Overview](https://github.com/aquini/aesd-final-project-aquini/wiki/Project-Overview)
 * [Project Schedule](https://github.com/users/aquini/projects/1)
+
+## Instructions to build the SD card image:
+After cloning the repository, just run the ./build.sh script
